@@ -9,7 +9,8 @@ export const routes: Routes = [
   {path: 'order', loadChildren: () => import('./features/order/order.module').then(m => m.OrderModule)},
   {path: 'order-step-one', component: OrderStepOneComponent},
   {path: 'order-step-two', component: OrderStepTwoComponent},
-  {path: 'order-step-three', component: OrderStepThreeComponent}
+  {path: 'order-step-three', component: OrderStepThreeComponent},
+  {path: '**', redirectTo: ''}
 ];
 
 
