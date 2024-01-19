@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+
+import { Routes } from '@angular/router';
 import { OrderStepOneComponent } from './features/order/components/order/order-step-one/order-step-one.component';
 import { OrderStepThreeComponent } from './features/order/components/order/order-step-three/order-step-three.component';
 import { OrderStepTwoComponent } from './features/order/components/order/order-step-two/order-step-two.component';
