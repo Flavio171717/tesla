@@ -1,4 +1,5 @@
-import { Routes } from '@angular/router';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 import { OrderStepOneComponent } from './features/order/components/order/order-step-one/order-step-one.component';
 import { OrderStepThreeComponent } from './features/order/components/order/order-step-three/order-step-three.component';
 import { OrderStepTwoComponent } from './features/order/components/order/order-step-two/order-step-two.component';
@@ -10,3 +11,11 @@ export const routes: Routes = [
   {path: 'order-step-two', component: OrderStepTwoComponent},
   {path: 'order-step-three', component: OrderStepThreeComponent}
 ];
+
+
+@NgModule({
+  declarations: [],
+  imports: [RouterModule.forRoot(routes,{useHash:true})],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
