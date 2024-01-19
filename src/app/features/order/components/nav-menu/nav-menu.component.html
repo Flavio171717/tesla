@@ -1,0 +1,20 @@
+<div class="container-fluid">
+  <h1>
+    Bienvenue chez Tesla Belgium !
+  </h1>
+  <nav>
+    <button id="step1">
+      <a style="color:white;" class="button" routerLink="/order-step-one" routerLinkActive="active" ariaCurrentWhenActive="page">
+      Step One </a>
+    </button>
+    <button id="step2">
+      <a style="color:white;" class="button" [style]="!isEnabledStep2 ? {cursor: 'not-allowed'}: null" [routerLink]="isEnabledStep2 ? '/order-step-two' : null" routerLinkActive="active" ariaCurrentWhenActive="page">
+      Step Two </a>
+    </button>
+    <button id="step3">
+      <a style="color:white;" [routerLink]="isEnabledStep3 ? '/order-step-three' : null" [style]="!isEnabledStep3 ? {cursor: 'not-allowed'}: null" class="button"  routerLinkActive="active" ariaCurrentWhenActive="page">
+      Step Three</a>
+    </button>
+
+  </nav>
+  </div>

@@ -1,0 +1,36 @@
+<app-nav-menu [isEnabledStep2]="isEnabledStep2" [isEnabledStep3]="isEnabledStep3"></app-nav-menu>
+<h1><b>
+  Step 3: Summary
+</b></h1>
+<h2 *ngIf="displayImageService.modSelected =='C'">Your Tesla Cybertruck</h2>
+<h2 *ngIf="displayImageService.modSelected !=='C'">Your Tesla Model {{displayImageService.modSelected}}</h2>
+
+
+<table>
+  <tr>
+    <td><b>{{displayImageService.descriptionSelected}}</b></td>
+    <td>{{displayImageService.priceSelected | currency : 'USD'}}</td>
+  </tr>
+  <tr>
+    <td>Range: {{displayImageService.rangeSelected}} miles - max speed: {{displayImageService.maxSpeedSelected}}</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><b>{{displayImageService.colDescriptionSelected}} color</b></td>
+    <td>{{displayImageService.colPriceSelected  | currency : 'USD'}}</td>
+  </tr>
+  <tr *ngIf="displayImageService.yokeSelected">
+    <td><b>Yoke steering wheel package</b></td>
+    <td>{{'1000' | currency : 'USD'}}</td>
+  </tr>
+  <tr *ngIf="displayImageService.towHitchSelected">
+    <td><b>Tow Hitch package</b></td>
+    <td>{{'1000' | currency : 'USD'}}</td>
+  </tr>
+  <tr>
+    <td><b>{{ 'total cost' | uppercase }}</b></td>
+    <td>{{totalCost | currency : 'USD'}}</td>
+  </tr>
+</table>
+
+<app-display-image></app-display-image>

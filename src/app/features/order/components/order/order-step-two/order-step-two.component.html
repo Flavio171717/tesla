@@ -1,0 +1,32 @@
+<app-nav-menu [isEnabledStep2]="isEnabledStep2" [isEnabledStep3]="isEnabledStep3"></app-nav-menu>
+
+<h1><b>
+  Step 2: Select your config and options
+</b></h1>
+<!-- CONFIG -->
+<h3>Config :
+    <select class="form-control" [(ngModel)]="configSelected" (ngModelChange)="loadDataConfig($event)" id="configSelect">
+      <option *ngFor="let con of config" [value]="con.id">
+        {{con.description}}
+      </option>
+    </select>
+<!-- ADDITIONNAL INFO CONFIG -->
+<p *ngIf="displayImageService.rangeSelected!=0">
+  Range: {{displayImageService.rangeSelected}} miles
+  - Max Speed: {{displayImageService.maxSpeedSelected}}
+  - Cost: {{displayImageService.priceSelected | currency : 'USD'}}
+</p>
+<!-- CHECKBOX TOW -->
+<p *ngIf="this.option.towHitch">{{'Tow hitch ? '}}
+  <input id="includeTow" type="checkbox" (change)="onCheckboxChangeTowHitch($event)" [(ngModel)]="towHitchIsChecked">
+</p>
+<!-- CHECKBOX YOKE -->
+<p *ngIf="this.option.yoke">{{'Yoke steering wheel ? '}}
+  <input id="includeYoke" type="checkbox" (change)="onCheckboxChangeYoke($event)" [(ngModel)]="yokeIsChecked">
+</p>
+
+
+</h3>
+
+<app-display-image></app-display-image>
+
