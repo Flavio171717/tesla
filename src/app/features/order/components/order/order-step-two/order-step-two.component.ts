@@ -1,6 +1,6 @@
 import { Option } from './../../../dto/option';
 import { OrderService } from '../../../../service/order.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import { TeslaConfigService } from '../../../../service/tesla-config.service';
 import { Config } from '../../../dto/config';
 
@@ -22,7 +22,7 @@ export class OrderStepTwoComponent implements OnInit {
 
   ngOnInit() {
     this.teslaConfig.getOptions(this.displayImageService.modSelected).subscribe(res => {
-      this.config=res.configs;
+      this.config=res.configs!;
       this.option=res;
 
       //si on revient à step 2 pour modifier après avoir été sur step 3
@@ -49,12 +49,21 @@ export class OrderStepTwoComponent implements OnInit {
     this.displayImageService.addConfig(this.configSelected,dataConfig.description,dataConfig.range, dataConfig.speed,dataConfig.price);
   }
 
-  onCheckboxChangeTowHitch(event: any){
-      this.displayImageService.addTowHitch(event.target.checked);
+  onCheckboxChangeTowHitch(event: Event){
+    if ((event.target as HTMLInputElement).checked){
+      this.displayImageService.addTowHitch(true);
+    }else{
+      this.displayImageService.addTowHitch(false);
+    }
   }
 
-  onCheckboxChangeYoke(event: any){
-    this.displayImageService.addYoke(event.target.checked);
+  onCheckboxChangeYoke(event: Event){
+    if ((event.target as HTMLInputElement).checked){
+      this.displayImageService.addYoke(true);
+    }else{
+      this.displayImageService.addYoke(false);
+    }
+
   }
 
 

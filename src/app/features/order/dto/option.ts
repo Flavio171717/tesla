@@ -1,7 +1,7 @@
 import { Config } from './config';
 export class Option
 {
-  codeModel?: Config[];
+  configs?: Config[];
   yoke?: boolean | undefined;
   towHitch?: boolean | undefined;
 }

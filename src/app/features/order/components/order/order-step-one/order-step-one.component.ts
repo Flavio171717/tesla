@@ -21,7 +21,6 @@ export class OrderStepOneComponent implements OnInit {
   models: ModelsDTO = {};
   modSelected: string = "default";
   colSelected: string = "default";
-  modelsServ: any;
   isEnabledStep2:boolean=false;
   isEnabledStep3:boolean=false;
 
@@ -30,7 +29,7 @@ export class OrderStepOneComponent implements OnInit {
   ngOnInit() {
     this.teslaConfig.getModel().subscribe(res => {
       this.model = res;
-      this.color = res.colors
+      //this.color = res.colors
 
       //si on revient à step 1 pour modifier après avoir été sur step 2
       if (this.displayImageService.modSelected !='default'){
@@ -40,12 +39,17 @@ export class OrderStepOneComponent implements OnInit {
       //si on revient à step 1 pour modifier après avoir été sur step 2
       if (this.displayImageService.colSelected !='default'){
         this.colSelected=this.displayImageService.colSelected;
+
         this.loadColor(this.displayImageService.modSelected);
       }
     });
   }
 
   loadColor(codeModel: string){
+    if (codeModel=='3'){
+      this.displayImageService.yokeSelected=false;
+      this.displayImageService.towHitchSelected=false;
+    }
     this.isEnabledStep2=true;
     this.isEnabledStep3=true;
     const index = this.model.findIndex(x => x.code === codeModel);
